@@ -27,10 +27,6 @@ bazel_dep(
     version = "0.2.0",
 )
 bazel_dep(
-    name = "rules_proto",
-    version = "7.1.0",
-)
-bazel_dep(
     name = "rules_python",
     version = "1.4.1",
 )
