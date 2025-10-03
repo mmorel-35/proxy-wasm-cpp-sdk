@@ -44,15 +44,16 @@ def proxy_wasm_cpp_sdk_repositories():
     maybe(
         http_archive,
         name = "com_google_absl",
-        sha256 = "95e90be7c3643e658670e0dd3c1b27092349c34b632c6e795686355f67eca89f",
-        strip_prefix = "abseil-cpp-20240722.0",
-        urls = ["https://github.com/abseil/abseil-cpp/archive/20240722.0.zip"],
+        sha256 = "69909dd729932cbbabb9eeaff56179e8d124515f5d3ac906663d573d700b4c7d",
+        strip_prefix = "abseil-cpp-20240116.2",
+        urls = ["https://github.com/abseil/abseil-cpp/archive/20240116.2.zip"],
     )
 
     maybe(
         http_archive,
         name = "com_google_re2",
-        sha256 = "18cf85922e27fad3ed9c96a27733037da445f35eb1a2744c306a37c6d11e95c4",
-        strip_prefix = "re2-2023-07-01",
-        url = "https://github.com/google/re2/archive/2023-07-01.tar.gz",
+        sha256 = "eb2df807c781601c14a260a507a5bb4509be1ee626024cb45acbd57cb9d4032b",
+        strip_prefix = "re2-2024-07-02",
+        url = "https://github.com/google/re2/archive/2024-07-02.tar.gz",
+        repo_mapping = {"@abseil-cpp": "@com_google_absl"},
     )
