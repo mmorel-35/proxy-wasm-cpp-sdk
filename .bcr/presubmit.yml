@@ -1,0 +1,15 @@
+# BCR presubmit configuration for proxy-wasm-cpp-sdk
+# This defines the tests that run in BCR CI to validate each release
+
+bcr_test_module:
+  module_path: "example"
+  matrix:
+    platform: ["debian11", "macos", "ubuntu2204"]
+    bazel: [6.x, 7.x, 8.x]
+  tasks:
+    build_examples:
+      name: "Build example WebAssembly modules"
+      platform: ${{ platform }}
+      bazel: ${{ bazel }}
+      build_targets:
+        - "//..."
