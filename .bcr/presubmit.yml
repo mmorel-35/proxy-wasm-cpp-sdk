@@ -14,4 +14,4 @@ bcr_test_module:
       platform: ${{ platform }}
       bazel: ${{ bazel }}
       build_targets:
-        - "//..."
+        - "@proxy-wasm-cpp-sdk//..."
