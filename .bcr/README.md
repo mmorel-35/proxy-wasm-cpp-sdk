@@ -12,12 +12,10 @@ The BCR publishing automation uses these template files to create new entries in
 
 Contains metadata about the module including:
 - Homepage and repository URL
-- Maintainer information
+- Maintainer information (populated from CODEOWNERS)
 - Version tracking
 
-**Important**: Before first use, update the placeholder values in the `maintainers` section with actual maintainer information (name, email, and GitHub username).
-
-**Note**: The `versions` field is automatically updated by the publishing workflow.
+**Note**: The maintainer information is populated from the CODEOWNERS file. The `versions` field is automatically updated by the publishing workflow.
 
 ### source.template.json
 
@@ -35,27 +33,25 @@ Defines tests that run in BCR CI to validate each release:
 
 ## Publishing Process
 
-When a new release is created (e.g., `v1.0.0`):
+When a new tag is pushed (e.g., `v1.0.0`):
 
-1. The GitHub Actions workflow (`.github/workflows/publish-to-bcr.yml`) is triggered
+1. The GitHub Actions workflow (`.github/workflows/publish-to-bcr.yml`) is automatically triggered
 2. The workflow uses these template files to generate a BCR entry
-3. A pull request is opened against the maintainer's fork of the BCR
-4. Once approved, the PR is merged to publish the new version
+3. A pull request is opened against https://github.com/bazelbuild/bazel-central-registry
+4. Once approved by BCR maintainers, the PR is merged to publish the new version
 
 ## Maintainer Instructions
 
 ### Prerequisites
 
-1. **Fork the Bazel Central Registry**: Create a fork of https://github.com/bazelbuild/bazel-central-registry in your GitHub account or organization
-
-2. **Create a Personal Access Token (PAT)**:
+1. **Create a Personal Access Token (PAT)**:
    - Go to GitHub Settings > Developer settings > Personal access tokens > Tokens (classic)
    - Click "Generate new token (classic)"
    - Name it something like "BCR Publish Token"
    - Select scopes: `repo` (Full control of private repositories) and `workflow` (Update GitHub Action workflows)
    - Generate and copy the token
 
-3. **Add the token as a repository secret**:
+2. **Add the token as a repository secret**:
    - Go to your repository Settings > Secrets and variables > Actions
    - Click "New repository secret"
    - Name: `BCR_PUBLISH_TOKEN`
@@ -70,23 +66,17 @@ When a new release is created (e.g., `v1.0.0`):
    git push origin v1.0.0
    ```
 
-2. **Create a GitHub Release**:
-   - Go to your repository on GitHub
-   - Click "Releases" > "Create a new release"
-   - Select the tag you just pushed
-   - Add release notes
-   - Publish the release
+   This will automatically trigger the "Publish to BCR" workflow.
 
-3. **Monitor the publish workflow**:
+2. **Monitor the publish workflow**:
    - Go to Actions tab in your repository
    - Find the "Publish to BCR" workflow run
    - Ensure it completes successfully
-   - Check the BCR fork for the new pull request
+   - Check https://github.com/bazelbuild/bazel-central-registry for the new pull request
 
-4. **Complete the BCR submission**:
-   - Review the pull request in your BCR fork
-   - If everything looks good, submit it to the upstream BCR
-   - Create a pull request from your fork to https://github.com/bazelbuild/bazel-central-registry
+3. **Complete the BCR submission**:
+   - Review the pull request in the BCR
+   - Wait for BCR maintainers to review and merge
    - Wait for BCR maintainers to review and merge
 
 ### Troubleshooting
