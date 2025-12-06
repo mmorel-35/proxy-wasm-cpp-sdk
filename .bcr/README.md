@@ -77,7 +77,6 @@ When a new tag is pushed (e.g., `v1.0.0`):
 3. **Complete the BCR submission**:
    - Review the pull request in the BCR
    - Wait for BCR maintainers to review and merge
-   - Wait for BCR maintainers to review and merge
 
 ### Troubleshooting
 
