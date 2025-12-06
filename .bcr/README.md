@@ -15,6 +15,8 @@ Contains metadata about the module including:
 - Maintainer information
 - Version tracking
 
+**Important**: Before first use, update the placeholder values in the `maintainers` section with actual maintainer information (name, email, and GitHub username).
+
 **Note**: The `versions` field is automatically updated by the publishing workflow.
 
 ### source.template.json

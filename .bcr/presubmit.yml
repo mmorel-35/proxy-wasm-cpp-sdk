@@ -1,7 +1,9 @@
 # BCR presubmit configuration for proxy-wasm-cpp-sdk
 # This defines the tests that run in BCR CI to validate each release
+# See https://docs.bazel.build/versions/main/external.html#module-testing
 
 bcr_test_module:
+  # The example directory contains Bazel build targets that test the SDK
   module_path: "example"
   matrix:
     platform: ["debian11", "macos", "ubuntu2204"]
