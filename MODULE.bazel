@@ -28,7 +28,7 @@ bazel_dep(
 )
 bazel_dep(
     name = "protobuf",
-    version = "33.2",
+    version = "34.0-rc1",
     repo_name = "com_google_protobuf",
 )
 bazel_dep(
@@ -46,5 +46,5 @@ bazel_dep(
 )
 bazel_dep(
     name = "rules_python",
-    version = "1.7.0",
+    version = "1.8.3",
 )
